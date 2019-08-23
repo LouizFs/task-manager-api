@@ -65,4 +65,53 @@ RSpec.describe 'Users API', type: :request do
         end
     end
 
+    describe 'Put /users/:id' do
+
+        before do
+            headers = {'Accept' => 'application/vnd.taskmanager.v1'}
+            put "/users/#{user_id}", params: {user: user_params}, headers: headers
+        end
+
+        context 'when the request params are valid' do
+
+            let(:user_params) {{email: "new@taskmanager.com"}}
+
+            it 'return status code 200' do
+                expect(response).to have_http_status(200)
+            end
+            
+            it 'returns json data for the uploaded user' do
+                user_response = JSON.parse(response.body, symbolize_names: true)
+                expect(user_response[:email]).to eq(user_params[:email])
+            end
+        end
+        
+        context 'when the request params are invalid' do
+            let (:user_params) {{email: "invalid@"}}
+
+            it 'returns code 422' do
+                expect(response).to have_http_status(422)
+            end
+            
+            it 'return json data for the updated user' do
+                user_response = JSON.parse(response.body, symbolize_names: true)
+                expect(user_response).to have_key(:errors)
+            end
+        end
+    end
+
+    describe 'Delete /users/:id' do
+        before do
+            headers = {"Accept"=>"vnd.taskmanager.v1"}
+            delete "/users/#{user_id}", params: {}, headers: headers
+        end
+
+        it "returns status code 204" do
+            expect(response).to have_http_status(204)
+        end
+
+        it 'removes the user from database' do
+            expect(User.find_by(id: user.id)).to be_nil
+        end
+    end
 end
