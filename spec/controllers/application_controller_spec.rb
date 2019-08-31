@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ApplicationController, type: :controller do
-    describe 'includes the correct concerns' do
-        it {expect(controller.class.ancestors).to include(Authenticable)} #retorno uma lista de classes que são implementadas dentro do application controller
-    end
+    # describe 'includes the correct concerns' do
+    #     it {expect(controller.class.ancestors).to include(Authenticable)} #retorno uma lista de classes que são implementadas dentro do application controller
+    # end
 end 
