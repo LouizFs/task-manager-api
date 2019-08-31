@@ -24,7 +24,7 @@ RSpec.describe 'Sessions API', type: :request do
 
             it 'returns the json data for the user with auth token' do
                 user.reload #pegando os dados atuais do usuario
-                expect(json_body[:auth_token]).to eq(user.auth_token) #json_body é um helper
+                expect(json_body[:data][:attributes][:auth_token]).to eq(user.auth_token) #json_body é um helper
             end
             
         end
