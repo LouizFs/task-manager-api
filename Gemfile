@@ -30,6 +30,7 @@ gem 'active_model_serializers', '~> 0.10.10'
 gem 'ransack'
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'devise_token_auth'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
