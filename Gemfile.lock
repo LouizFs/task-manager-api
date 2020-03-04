@@ -101,7 +101,7 @@ GEM
     pg (1.1.4)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
-    puma (3.12.1)
+    puma (3.12.4)
     rack (2.0.7)
     rack-cors (1.0.3)
     rack-test (0.6.3)
@@ -202,7 +202,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   omniauth (~> 1.6, >= 1.6.1)
   pg
-  puma (~> 3.0)
+  puma (~> 3.12)
   rack-cors
   rails (~> 5.0.2)
   rails-i18n
